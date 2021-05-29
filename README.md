@@ -1,4 +1,4 @@
 # Multi-client-app 📋
-Web site for businesses and companies.
-\nSomehow like social media in business world.
-\nBuilt using MERN stack. 
+1.Web site for businesses and companies.
+1.Somehow like social media in business world.
+1.Built using MERN stack. 
