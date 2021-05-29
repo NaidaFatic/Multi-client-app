@@ -1,1 +1,4 @@
-# Multi-client-app
+# Multi-client-app 📋
+Web site for businesses and companies.
+Somehow like social media in business world.
+Built using MERN stack. 
