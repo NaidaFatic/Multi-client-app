@@ -1,4 +1,5 @@
 # Multi-client-app 📋
-1. Web site for businesses and companies.
-1. Somehow like social media in business world.
-1. Built using MERN stack. 
+- Web site for businesses and companies.
+- Somehow like social media in business world.
+- Built using MERN stack. 
+- https://multi-client-app.herokuapp.com/
