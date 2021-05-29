@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/NaidaFatic/Multi-client-app/issues"
   },
-  "homepage": "https://github.com/NaidaFatic/Multi-client-app#readme"
+  "homepage": "https://github.com/NaidaFatic/Multi-client-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
