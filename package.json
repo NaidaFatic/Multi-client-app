@@ -1,0 +1,19 @@
+{
+  "name": "multi-client-app",
+  "version": "1.0.0",
+  "description": "Web site for businesses and companies.\r Somehow like social media in business world.\r Built using MERN stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NaidaFatic/Multi-client-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NaidaFatic/Multi-client-app/issues"
+  },
+  "homepage": "https://github.com/NaidaFatic/Multi-client-app#readme"
+}
