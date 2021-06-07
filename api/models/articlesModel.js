@@ -19,6 +19,7 @@ var articleSchema = mongoose.Schema({
     },
     date_of_post: {
         type: Date,
+        required: true,
         default:Date.now
     }
 });

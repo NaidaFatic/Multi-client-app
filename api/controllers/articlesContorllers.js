@@ -20,7 +20,6 @@ exports.add = function (req, res) {
     article.name = req.body.name;
     article.description=req.body.description;
     article.price=req.body.price;
-    article.date_of_post=req.body.date_of_post;
     article.user_id=req.body.user_id;
 //Save and check error
 article.save(function (err) {
@@ -31,6 +30,21 @@ res.json({
         data: article
     });
 });
+};
+
+exports.getUserSpecificPosts = function(req,res){
+    Article.find({user_id:req.params.user_id})
+    .exec(function(err, article){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json({
+                status:"Success",
+                data:article
+            })
+        }
+    })
 };
 // View article
 exports.view = function (req, res) {

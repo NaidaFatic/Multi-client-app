@@ -17,6 +17,10 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        default: 'USER'
+    },
     company_name: {
           type: String,
           required: true

@@ -23,7 +23,6 @@ exports.add = function (req, res) {
     user.email = req.body.email;
     user.company_name = req.body.company_name;
     user.company_email = req.body.company_email;
-    user.date_of_start = req.body.date_of_start;
     user.description = req.body.description;
     user.saved_posts = req.body.saved_posts;
     user.password = req.body.password;
@@ -49,8 +48,44 @@ exports.view = function (req, res) {
     });
 };
 
-exports.login = function (req, res) {
+function authenticate(email, pass, fn) {
+  User.findOne ({email: email}, function(err, user) {
+    if (!user) return fn(new Error('cannot find user'));
+      if (pass == user.password) return fn(null, user);
+      fn(new Error('invalid password'));
+  })
+}
+
+exports.login = function(req, res){
+  authenticate(req.body.email, req.body.password, function(err, user){
+    if (user) {
+      res.json({
+          message: 'User Details',
+          data: user
+      });
+    } else {
+      res.json({
+          message: 'Wrong password or email!'
+      });
+    }
+  });
+};
+
+/*exports.login = function (req, res) {
     var username = req.body.email;
     var password = req.body.password;
-    console.log(req.body);
-};
+  //  console.log(req.body);
+User.findById(req.params.user_id, function (err, user) {
+      if (err)
+          res.json({
+              status: "error",
+              message: err
+          });
+      res.json({
+
+          //status: "success",
+        //  message: "Got User Successfully!",
+        //  data: user
+      });
+  });
+};*/

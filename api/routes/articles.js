@@ -8,5 +8,7 @@ router.route('/article')
     .post(articleController.add);
 router.route('/article/:article_id')
     .get(articleController.view)
+router.route('/article/individual/:user_id')
+    .get(articleController.getUserSpecificPosts)
 //Export API routes
 module.exports = router;
