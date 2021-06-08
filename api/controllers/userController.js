@@ -27,18 +27,26 @@ exports.add = function (req, res) {
     user.saved_posts = req.body.saved_posts;
     user.password = req.body.password;
 //Save and check error
-    user.save(function (err) {
-        if (err)
-            res.json(err);
-res.json({
-            message: "New User Added!",
-            data: user
-        });
+authenticateEmail(req.body.email, function(err, user1){
+  if (user1) {
+    res.json({
+        message: 'User with same email already exists!'
     });
+  } else {
+      user.save(function (err) {
+          if (err)
+              res.json(err);
+          res.json({
+              message: "New User Added!",
+              data: user
+          });
+      });
+    }
+  });
 };
 // View User
 exports.view = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) { //mby
+    User.findById(req.params.user_id, function (err, user) { 
         if (err)
             res.send(err);
         res.json({
@@ -48,10 +56,19 @@ exports.view = function (req, res) {
     });
 };
 
+//for login
 function authenticate(email, pass, fn) {
   User.findOne ({email: email}, function(err, user) {
     if (!user) return fn(new Error('cannot find user'));
       if (pass == user.password) return fn(null, user);
+      fn(new Error('invalid password'));
+  })
+}
+
+//for registration
+function authenticateEmail(email, fn) {
+  User.findOne ({email: email}, function(err, user) {
+    if (user) return fn(null, user);
       fn(new Error('invalid password'));
   })
 }
@@ -70,22 +87,3 @@ exports.login = function(req, res){
     }
   });
 };
-
-/*exports.login = function (req, res) {
-    var username = req.body.email;
-    var password = req.body.password;
-  //  console.log(req.body);
-User.findById(req.params.user_id, function (err, user) {
-      if (err)
-          res.json({
-              status: "error",
-              message: err
-          });
-      res.json({
-
-          //status: "success",
-        //  message: "Got User Successfully!",
-        //  data: user
-      });
-  });
-};*/

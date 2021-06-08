@@ -47,6 +47,10 @@ var userSchema = mongoose.Schema({
     }
 });
 
+userSchema.query.byEmail= function(email) {
+   return this.where({ email: new RegExp(email, 'i') })
+ };
+
 var User = module.exports = mongoose.model('user', userSchema);
 module.exports.get = function (callback, limit) {
    User.find(callback).limit(limit);
