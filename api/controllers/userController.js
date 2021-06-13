@@ -1,4 +1,6 @@
 User = require('../models/userModel');
+var jwt = require("jsonwebtoken");
+
 //For index
 exports.index = function (req, res) {
     User.get(function (err, user) {
@@ -46,7 +48,7 @@ authenticateEmail(req.body.email, function(err, user1){
 };
 // View User
 exports.view = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) { 
+    User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
         res.json({
@@ -76,9 +78,12 @@ function authenticateEmail(email, fn) {
 exports.login = function(req, res){
   authenticate(req.body.email, req.body.password, function(err, user){
     if (user) {
+      var user_token = getJWTToken(user);
       res.json({
           message: 'User Details',
-          data: user
+          data: user,
+          token:user_token,
+          token_content:decodeJTWToken(user_token)
       });
     } else {
       res.json({
@@ -87,3 +92,16 @@ exports.login = function(req, res){
     }
   });
 };
+
+function getJWTToken(user){
+    return jwt.sign({
+        uid:user._id,
+        email:user.email,
+        exp:Math.floor(Date.now() / 1000) + (60 * 60)
+    },"MY_KEY")
+
+}
+
+function decodeJTWToken(token){
+    return jwt.verify(token, "MY_KEY");
+}
