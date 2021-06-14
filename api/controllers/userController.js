@@ -71,7 +71,7 @@ function authenticate(email, pass, fn) {
 function authenticateEmail(email, fn) {
   User.findOne ({email: email}, function(err, user) {
     if (user) return fn(null, user);
-      fn(new Error('invalid password'));
+      fn(new Error('found email'));
   })
 }
 
