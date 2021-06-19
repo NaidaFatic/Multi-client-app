@@ -40,9 +40,12 @@ authenticateEmail(req.body.email, function(err, user1){
     user.save(function (err) {
       if (err)
       res.json(err);
+      var user_token = encodeJWT(user);
       res.json({
         message: "New User Added!",
-        data: user
+        data: user,
+        token:user_token,
+        //token_content:decodeJWT(user_token)
       });
     });
   }});
