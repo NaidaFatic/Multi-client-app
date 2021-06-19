@@ -4,10 +4,9 @@ let router = require('express').Router();
 var userController = require('../controllers/userController');
 
 // Bio routes
-router.route('/get')
-.get(userController.getAll)
 router.route('/')
 .post(userController.register)
+.get(userController.getAll)
 
 router.route('/login')
 .post(userController.login)
