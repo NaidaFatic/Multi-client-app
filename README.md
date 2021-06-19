@@ -10,7 +10,7 @@
 
 # Installation
 
+ recommended for running an app
  ```bash
 npm install nodemon -g
  ```
- recommended for running an app
