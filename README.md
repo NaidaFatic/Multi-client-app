@@ -10,6 +10,6 @@
 - 
 - ## Installation
 - 
-- ```bash
-- npm install nodemon -g
-- ```
+ ```bash
+npm install nodemon -g
+ ```
