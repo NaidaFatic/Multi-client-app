@@ -2,7 +2,7 @@ User = require('../models/userModel');
 var jwt = require("jsonwebtoken");
 
 //get all users
-exports.index = function (req, res) {
+exports.getAll = function (req, res) {
   User.get(function (err, user) {
     if (err)
     res.json({
@@ -18,7 +18,7 @@ exports.index = function (req, res) {
 };
 
 //For creating new user
-exports.add = function (req, res) {
+exports.register = function (req, res) {
   var user = new User();
   user.name = req.body.name;
   user.surname = req.body.surname;
@@ -51,8 +51,8 @@ authenticateEmail(req.body.email, function(err, user1){
   }});
 };
 
-// View User
-exports.view = function (req, res) {
+// get user
+exports.getUser = function (req, res) {
   User.findById(req.params.user_id, function (err, user) {
     if (err)
     res.send(err);
@@ -63,7 +63,7 @@ exports.view = function (req, res) {
   });
 };
 
-//login
+// login
 exports.login = function(req, res){
   authenticate(req.body.email, req.body.password, function(err, user){
     if (user) {

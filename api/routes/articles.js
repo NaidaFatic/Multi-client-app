@@ -5,11 +5,11 @@ var articleController = require('../controllers/articlesContorllers');
 
 // Bio routes
 router.route('/')
-.get(articleController.index)
+.get(articleController.getAll)
 .post(articleController.add)
 
 router.route('/:article_id')
-.get(articleController.view)
+.get(articleController.getArticle)
 
 router.route('/individual/:user_id')
 .get(articleController.getUserSpecificArticle)

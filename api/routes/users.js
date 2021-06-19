@@ -5,14 +5,14 @@ var userController = require('../controllers/userController');
 
 // Bio routes
 router.route('/')
-.get(userController.index)
-.post(userController.add)
+.get(userController.getAll)
+.post(userController.register)
 
 router.route('/login')
 .post(userController.login)
 
 router.route('/:user_id')
-.get(userController.view)
+.get(userController.getUser)
 
 //Export API routes
 module.exports = router;

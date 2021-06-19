@@ -1,7 +1,7 @@
 Article = require('../models/articlesModel');
 
 //get all articles
-exports.index = function (req, res) {
+exports.getAll = function (req, res) {
   Article.get(function (err, article) {
     if (err)
     res.json({
@@ -51,7 +51,7 @@ exports.getUserSpecificArticle = function(req,res){
 };
 
 // View article
-exports.view = function (req, res) {
+exports.getArticle = function (req, res) {
   Article.findById(req.params.article_id, function (err, article) {
     if (err)
     res.send(err);
