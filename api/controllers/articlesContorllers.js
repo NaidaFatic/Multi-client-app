@@ -5,7 +5,7 @@ exports.getAll = function (req, res) {
   Article.get(function (err, article) {
     if (err)
     res.json({
-      status: "error",
+      status: "error", 
       message: err
      });
     res.json({
