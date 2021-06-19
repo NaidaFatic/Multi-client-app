@@ -7,3 +7,9 @@
 - ✔ Mongo|Atlas v4.4.6 |mongoose v5.12.12
 - ✔ Express.js v4.17.1
 - ✔ React 
+- 
+- ## Installation
+- 
+- ```bash
+- npm install nodemon -g
+- ```
