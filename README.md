@@ -13,3 +13,4 @@
  ```bash
 npm install nodemon -g
  ```
+ recommended for running an app
