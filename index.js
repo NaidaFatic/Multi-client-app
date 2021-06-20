@@ -9,17 +9,18 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Welcome message
-app.get('/', (req, res) => res.send('Welcome to Express'));
+app.post("/post", (req, res) => {
+  console.log("Connected to React");
+  res.redirect("/");
+});
 // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running on Port "+ port);
 })
 //Import routes
-let apiRoutes = require("./api/routes/routes.js")
 let usersRoutes = require("./api/routes/users.js")
 let articlesRoutes = require("./api/routes/articles.js")
 //Use API routes in the App
-app.use('/test', apiRoutes)
 app.use('/api/users', usersRoutes)
 app.use('/api/articles', articlesRoutes)
 //import mongoose
