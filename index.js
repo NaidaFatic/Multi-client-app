@@ -9,9 +9,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Welcome message
-app.post("/post", (req, res) => {
+app.post("/", (req, res) => {
   console.log("Connected to React");
-  res.redirect("/");
+  res.redirect("http://localhost:3000");
 });
 // Launch app to the specified port
 app.listen(port, function() {
