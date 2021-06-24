@@ -1,5 +1,11 @@
+require('dotenv').config()
 let express = require('express')
 let app = express();
+
+const user = process.env.DB_USER;
+const pass = process.env.DB_PASS;
+const collection = process.env.DB_COLLECTION;
+
 //import body parser
 let bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
@@ -10,8 +16,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 // Welcome message
 app.post("/", (req, res) => {
-  console.log("Connected to React");
-  res.redirect("http://localhost:3000");
 });
 // Launch app to the specified port
 app.listen(port, function() {
@@ -27,7 +31,7 @@ app.use('/api/articles', articlesRoutes)
 let mongoose = require('mongoose');
 
 //connect to mongoose
-const dbPath = 'mongodb+srv://naida:naida@test.4wxap.mongodb.net/multi-client?retryWrites=true&w=majority';
+const dbPath = 'mongodb+srv://'+user+':'+pass+'@'+collection+'.4wxap.mongodb.net/multi-client?retryWrites=true&w=majority';
 const options = {useNewUrlParser: true, useUnifiedTopology: true}
 const mongo = mongoose.connect(dbPath, options);
 mongo.then(() => {
