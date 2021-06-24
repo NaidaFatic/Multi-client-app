@@ -22,5 +22,6 @@ npm install nodemon -g
 DB_USER = your_db_username
 DB_PASS = your_db_password
 DB_COLLECTION = your_db_collection
+JWT_TOKEN = your_jwt_token
  ```
  PS: .env file has to be at the root of your project folder
