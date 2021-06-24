@@ -1,5 +1,6 @@
 User = require('../models/userModel');
 var jwt = require("jsonwebtoken");
+const key = process.env.JWT_TOKEN;
 
 //get all users
 exports.getAll = function (req, res) {
@@ -104,10 +105,10 @@ function encodeJWT(user){
     uid:user._id,
     email:user.email,
     exp:Math.floor(Date.now() / 1000) + (60 * 60)
-  },"MY_KEY")
+  },key)
 }
 
 //decode jwt
 function decodeJWT(token){
-  return jwt.verify(token, "MY_KEY");
+  return jwt.verify(token, key);
 }
