@@ -1,6 +1,8 @@
 User = require('../models/userModel');
 var jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
 const key = process.env.JWT_TOKEN;
+const hash_token = 5;
 
 //get all users
 exports.getAll = function (req, res) {
@@ -29,7 +31,10 @@ exports.register = function (req, res) {
   user.company_email = req.body.company_email;
   user.description = req.body.description;
   user.saved_posts = req.body.saved_posts;
-  user.password = req.body.password;
+  bcrypt.hash(req.body.password, hash_token, (err, hash) => {
+     if(err) return cb(err)
+     else user.password = hash;
+  });
 //Save and check error
 authenticateEmail(req.body.email, function(err, user1){
   if (user1) {
@@ -86,8 +91,10 @@ exports.login = function(req, res){
 function authenticate(email, pass, fn) {
   User.findOne ({email: email}, function(err, user) {
     if (!user) return fn(new Error('cannot find user'));
-    if (pass == user.password) return fn(null, user);
-    fn(new Error('invalid password'));
+    bcrypt.compare(pass, user.password, function (err, isMatch) {
+       if (err) return fn(new Error('invalid password'));
+       return fn(null, user);
+     });
   })
 }
 
