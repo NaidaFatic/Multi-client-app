@@ -14,7 +14,7 @@ var cors = require('cors')
 app.use(cors())
 
 var corsOptions = {
-  origin: 'https://multi-client-front.vercel.app/',
+  origin: 'https://multi-client-app.herokuapp.com/',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
