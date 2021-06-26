@@ -4,7 +4,8 @@
   "description": "Web site for businesses and companies.\r Somehow like social media in business world.\r Built using MERN stack.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,5 @@
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.12",
     "mongoose-unique-validator": "^2.0.3"
-  },
-  "scripts": {
-    "start": "node index.js"
   }
 }
