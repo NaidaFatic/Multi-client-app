@@ -75,8 +75,6 @@ exports.login = function(req, res){
     if (user) {
       var user_token = encodeJWT(user);
       res.json({
-        message: 'User Details',
-        data: user,
         token:user_token,
         //token_content:decodeJWT(user_token)
       });
