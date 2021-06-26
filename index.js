@@ -22,6 +22,10 @@ app.get('/', cors(corsOptions), function (req, res, next) {
   res.json({msg: 'This is backend!'}) //CORS-enabled for all origins!
 })
 
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+
 //configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
     extended: true
