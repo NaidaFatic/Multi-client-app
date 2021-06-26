@@ -22,10 +22,6 @@ app.get('/', cors(corsOptions), function (req, res, next) {
   res.json({msg: 'This is backend!'}) //CORS-enabled for all origins!
 })
 
-/*app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})*/
-
 //configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
     extended: true
@@ -45,7 +41,7 @@ app.use('/api/articles', articlesRoutes)
 let mongoose = require('mongoose');
 
 //connect to mongoose
-const dbPath = 'mongodb+srv://naida:naida@test.4wxap.mongodb.net/multi-client?retryWrites=true&w=majority';
+const dbPath = 'mongodb+srv://'+user+':'+pass+'@'+collection+'.4wxap.mongodb.net/multi-client?retryWrites=true&w=majority';
 const options = {useNewUrlParser: true, useUnifiedTopology: true}
 const mongo = mongoose.connect(dbPath, options);
 mongo.then(() => {
