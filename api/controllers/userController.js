@@ -80,8 +80,9 @@ exports.login = function(req, res){
       });
     } else {
       res.json({
-        message: 'Wrong password or email!'
-      });}
+       "error" : "Email or password not corecct"
+       });
+    }
     });
 };
 
