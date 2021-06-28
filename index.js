@@ -7,14 +7,19 @@ const collection = process.env.DB_COLLECTION;
 //import body parser
 let bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
+var cors = require('cors')
+
+app.use(cors())
+
+app.get('/', function (req, res, next) {
+  res.json({msg: 'This is backend!'}) //CORS-enabled for all origins!
+})
+
 //configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-// Welcome message
-app.post("/", (req, res) => {
-});
 // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running on Port "+ port);
