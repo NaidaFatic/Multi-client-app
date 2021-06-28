@@ -13,12 +13,7 @@ var cors = require('cors')
 
 app.use(cors())
 
-var corsOptions = {
-  origin: 'https://multi-client-app.herokuapp.com/',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-app.get('/', cors(corsOptions), function (req, res, next) {
+app.get('/', function (req, res, next) {
   res.json({msg: 'This is backend!'}) //CORS-enabled for all origins!
 })
 
