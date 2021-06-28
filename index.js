@@ -11,7 +11,7 @@ let bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
 var cors = require('cors')
 
-app.use(cors())
+
 
 app.get('/', function (req, res, next) {
   res.json({msg: 'This is backend!'}) //CORS-enabled for all origins!

@@ -45,9 +45,9 @@ authenticateEmail(req.body.email, function(err, user1){
   else {
     user.save(function (err) {
       if (err)
-      res.json(err);
+      res.send(err);
       var user_token = encodeJWT(user);
-      res.json({
+      res.send({
         message: "New User Added!",
         data: user,
         token:user_token,
@@ -74,12 +74,12 @@ exports.login = function(req, res){
   authenticate(req.body.email, req.body.password, function(err, user){
     if (user) {
       var user_token = encodeJWT(user);
-      res.json({
+      res.send({
         token:user_token,
         //token_content:decodeJWT(user_token)
       });
     } else {
-      res.json({
+      res.send({
        "error" : "Email or password not corecct"
        });
     }
