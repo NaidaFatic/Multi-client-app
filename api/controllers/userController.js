@@ -3,7 +3,6 @@ var jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const key = process.env.JWT_TOKEN;
 const hash_token = 5;
-
 //get all users
 exports.getAll = function (req, res) {
   User.get(function (err, user) {
@@ -19,7 +18,6 @@ exports.getAll = function (req, res) {
     });
   });
 };
-
 //For creating new user
 exports.register = function (req, res) {
   var user = new User();
@@ -56,7 +54,6 @@ authenticateEmail(req.body.email, function(err, user1){
     });
   }});
 };
-
 // get user
 exports.getUser = function (req, res) {
   User.findById(req.params.user_id, function (err, user) {
@@ -68,7 +65,6 @@ exports.getUser = function (req, res) {
     });
   });
 };
-
 // login
 exports.login = function(req, res){
   authenticate(req.body.email, req.body.password, function(err, user){
@@ -85,7 +81,6 @@ exports.login = function(req, res){
     }
     });
 };
-
 //For login
 function authenticate(email, pass, fn) {
   User.findOne ({email: email}, function(err, user) {
@@ -96,7 +91,6 @@ function authenticate(email, pass, fn) {
      });
   })
 }
-
 //for registration
 function authenticateEmail(email, fn) {
   User.findOne ({email: email}, function(err, user) {
@@ -104,7 +98,6 @@ function authenticateEmail(email, fn) {
     fn(new Error('found email'));
   })
 }
-
 //create jwt
 function encodeJWT(user){
   return jwt.sign({
@@ -113,7 +106,6 @@ function encodeJWT(user){
     exp:Math.floor(Date.now() / 1000) + (60 * 60)
   },key)
 }
-
 //decode jwt
 function decodeJWT(token){
   return jwt.verify(token, key);
