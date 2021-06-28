@@ -1,27 +1,20 @@
 require('dotenv').config()
 let express = require('express')
 let app = express();
-
 const user = process.env.DB_USER;
 const pass = process.env.DB_PASS;
 const collection = process.env.DB_COLLECTION;
-
 //import body parser
 let bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
-var cors = require('cors')
-
-
-
-app.get('/', function (req, res, next) {
-  res.json({msg: 'This is backend!'}) //CORS-enabled for all origins!
-})
-
 //configure bodyparser to hande the post requests
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+// Welcome message
+app.post("/", (req, res) => {
+});
 // Launch app to the specified port
 app.listen(port, function() {
     console.log("Running on Port "+ port);
@@ -34,7 +27,6 @@ app.use('/api/users', usersRoutes)
 app.use('/api/articles', articlesRoutes)
 //import mongoose
 let mongoose = require('mongoose');
-
 //connect to mongoose
 const dbPath = 'mongodb+srv://'+user+':'+pass+'@'+collection+'.4wxap.mongodb.net/multi-client?retryWrites=true&w=majority';
 const options = {useNewUrlParser: true, useUnifiedTopology: true}
