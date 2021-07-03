@@ -74,7 +74,7 @@ exports.login = function(req, res){
       });
     } else {
       res.json({
-       "error" : "Email or password not corecct"
+       "error" : "Email or password not correct"
        });
     }
     });
