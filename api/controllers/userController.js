@@ -46,8 +46,6 @@ authenticateEmail(req.body.email, function(err, user1){
       res.json(err);
       var user_token = encodeJWT(user);
       res.json({
-        message: "New User Added!",
-        data: user,
         token:user_token,
         //token_content:decodeJWT(user_token)
       });
