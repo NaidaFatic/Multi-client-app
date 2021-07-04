@@ -101,7 +101,7 @@ function encodeJWT(user){
   return jwt.sign({
     uid:user._id,
     email:user.email,
-    exp:Math.floor(Date.now() / 1000) + (60 * 60)
+    exp:Math.floor(Date.now() / 10) + (6000 * 60)
   },key)
 }
 //decode jwt
