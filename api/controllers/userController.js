@@ -13,7 +13,6 @@ exports.getAll = function (req, res) {
     });
     res.json({
       status: "success",
-      message: "Got User Successfully!",
       data: user
     });
   });
@@ -58,7 +57,6 @@ exports.getUser = function (req, res) {
     if (err)
     res.json(err);
     res.json({
-      message: 'User Details',
       data: user
     });
   });
