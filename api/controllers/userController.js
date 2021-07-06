@@ -42,7 +42,10 @@ authenticateEmail(req.body.email, function(err, user1){
   else {
     user.save(function (err) {
       if (err)
-      res.json(err);
+      res.json({
+        status: "error",
+        message: err
+      });
       var user_token = encodeJWT(user);
       res.json({
         token:user_token,
